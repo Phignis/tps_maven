@@ -17,4 +17,10 @@ public class AddressController {
         model.addAttribute("allAddresses", addressRepository.findAll());
         return "addresses";
     }
+
+    @GetMapping("/giveAddress")
+    public String showAddressForm() {
+        return "addressForm";
+    }
+
 }
