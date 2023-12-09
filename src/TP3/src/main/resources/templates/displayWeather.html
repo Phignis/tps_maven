@@ -7,6 +7,12 @@
 </head>
 <body>
     <div th:replace="fragments/navbar"></div>
-    <p th:text="'Addresse : ' + ${givenAddress} + ' !'" />
+    <p th:text="'Forecast for following adress : ' + ${givenAddress} + ' !'" />
+    <p th:text="'debug address from weather API : ' + ${weatherInfo.getCityName()} + ' !'" />
+    <div>
+        <div class="forecast-card" th:each="forecast : ${weatherInfo.forecastsPredicted}">
+            <p th:text="'date : ' + ${forecast.getForecastDate()}"></p>
+        </div>
+    </div>
 </body>
 </html>

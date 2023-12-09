@@ -1,10 +1,10 @@
-package fr.ensim.tp3.TP3.model;
+package fr.ensim.tp3.TP3.model.json;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record LocationWeather(@JsonProperty("features") Feature[] features) {
+public record LocationCoords(@JsonProperty("features") Feature[] features) {
     @JsonIgnoreProperties(ignoreUnknown = true)
     private record Feature(@JsonProperty("geometry") Geometry g, @JsonProperty("properties")Property p) {}
 
@@ -18,10 +18,11 @@ public record LocationWeather(@JsonProperty("features") Feature[] features) {
         return features.length != 0;
     }
 
-    public float getXCoord() {
+    public float getLongitude() {
         return features[0].g.coords[0];
     }
-    public float getYCoord() {
+
+    public float getLatitude() {
         return features[0].g.coords[1];
     }
 
